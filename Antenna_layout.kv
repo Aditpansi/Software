@@ -1,0 +1,143 @@
+<DrawerClickableItem@MDNavigationDrawerItem>:
+    focus_color: "#fffff0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+<DrawerLabelItem@MDNavigationDrawerItem>:
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+<MainScreen>:
+    MDNavigationLayout:
+
+        MDScreenManager:
+            id: screen_manager
+
+            # Multi-Camera Screen
+            MDScreen:
+                name: "camera_screen"
+                BoxLayout:
+                    orientation: "vertical"
+
+                    # Top App Bar (Fixed at the top)
+                    MDTopAppBar:
+                        title: "MAMBA"
+                        elevation: 4
+                        pos_hint: {"top": 1}
+                        md_bg_color: "#fffff0"
+                        specific_text_color: "#4a4939"
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                        right_action_items: [["theme-light-dark", lambda x: app.toggle_theme()]]
+
+                    # GridLayout for 6 Camera Views
+                    GridLayout:
+                        cols: 3
+                        rows: 2
+                        size_hint: (1, 0.85)  # 85% of screen height for cameras
+                        spacing: dp(5)
+
+                        Camera:
+                            id: cam1
+                            resolution: (640, 480)
+                            play: True
+
+                        Camera:
+                            id: cam2
+                            resolution: (640, 480)
+                            play: True
+
+                        Camera:
+                            id: cam3
+                            resolution: (640, 480)
+                            play: True
+
+                        Camera:
+                            id: cam4
+                            resolution: (640, 480)
+                            play: True
+
+                        Camera:
+                            id: cam5
+                            resolution: (640, 480)
+                            play: True
+
+                        Camera:
+                            id: cam6
+                            resolution: (640, 480)
+                            play: True
+
+                    # Message Input and Send
+                    # MDTextField:
+                    #     id: message_input
+                    #     hint_text: "Type a message..."
+                    #     size_hint: (1, None)
+                    #     height: dp(50)
+                    #     multiline: False
+                    #     on_text_validate: app.send_message(message_input.text)
+
+                    # Scrollable message window (below cameras)
+                    MDScrollView:
+                        size_hint: (1, 0.15)
+                        MDList:
+                            id: message_list
+
+                    # 3D Progress Bar with Percentage Display
+                    BoxLayout:
+                        size_hint: (1, 0.05)
+                        padding: dp(10)
+                        spacing: dp(10)
+
+                        MDProgressBar:
+                            id: progress_bar
+                            value: 0  # Initial progress
+                            max: 100
+                            size_hint_x: 0.8
+                            pos_hint: {"center_x": 0.5}
+                            color: "#229fff"
+
+                        MDLabel:
+                            id: progress_label
+                            text: "0%"
+                            size_hint_x: 0.2
+                            halign: "center"
+                            theme_text_color: "Custom"
+                            text_color: "#ffffff"
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+
+            MDNavigationDrawerMenu:
+
+                MDNavigationDrawerHeader:
+                    title: "ADR"
+                    title_color: "#4a4939"
+                    text: "By Momentux Systems"
+                    spacing: "4dp"
+                    padding: "12dp", 0, 0, "56dp"
+
+                MDNavigationDrawerLabel:
+                    text: "Settings"
+
+                MDNavigationDrawerDivider:
+
+                DrawerClickableItem:
+                    icon: "camera"
+                    text: "Multi-Camera"
+                    on_release: app.root.ids.screen_manager.current = "camera_screen"
+
+                DrawerClickableItem:
+                    icon: "message-text"
+                    text: "Messages"
+                    on_release: screen_manager.current = "message_window_screen"
+
+                DrawerClickableItem:
+                    icon: "arrow-left"
+                    text: "Back"
+                    on_release: nav_drawer.set_state("close")
