@@ -30,9 +30,20 @@ class MyApp(MDApp):
         else:
             self.theme_cls.theme_style = "Light"
 
+        # Update progress label color based on theme
+        self.update_label_color()
+
     def toggle_nav_drawer(self):
         # Placeholder function for opening a navigation drawer
         print("Navigation drawer toggled")
+
+    def update_label_color(self):
+        """Dynamically change the progress label color based on the theme"""
+        label = self.root.ids.progress_label
+        if self.theme_cls.theme_style == "Light":
+            label.text_color = (0, 0, 0, 1)  # Black in light mode
+        else:
+            label.text_color = (1, 1, 1, 1)  # White in dark mode
 
     def update_progress(self, dt):
         progress = self.root.ids.progress_bar
@@ -47,6 +58,7 @@ class MyApp(MDApp):
 
     def on_start(self):
         Clock.schedule_interval(self.update_progress, 1)  # Update every second
+        self.update_label_color()  # Ensure label color matches theme on startup
 
 
 

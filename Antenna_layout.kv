@@ -38,38 +38,45 @@
                     GridLayout:
                         cols: 3
                         rows: 2
-                        size_hint: (1, 0.85)  # 85% of screen height for cameras
-                        spacing: dp(5)
+                        size_hint: (0.59, 0.25)  # Width and height adjustment
+                        spacing: dp(1.5)
+                        padding: dp(10), dp(10)  # (left, top, right, bottom) - Adds left padding
 
                         Camera:
                             id: cam1
                             resolution: (640, 480)
                             play: True
+                            size_hint: (1, 1)
 
                         Camera:
                             id: cam2
                             resolution: (640, 480)
                             play: True
+                            size_hint: (1, 1)
 
                         Camera:
                             id: cam3
                             resolution: (640, 480)
                             play: True
+                            size_hint: (1, 1)
 
                         Camera:
                             id: cam4
                             resolution: (640, 480)
                             play: True
+                            size_hint: (1, 1)
 
                         Camera:
                             id: cam5
                             resolution: (640, 480)
                             play: True
+                            size_hint: (1, 1)
 
                         Camera:
                             id: cam6
                             resolution: (640, 480)
                             play: True
+                            size_hint: (1, 1)
 
                     # Message Input and Send
                     # MDTextField:
@@ -96,7 +103,7 @@
                             id: progress_bar
                             value: 0  # Initial progress
                             max: 100
-                            size_hint_x: 0.8
+                            size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             color: "#229fff"
 
