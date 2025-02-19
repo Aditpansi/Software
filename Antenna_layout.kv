@@ -1,17 +1,3 @@
-<DrawerClickableItem@MDNavigationDrawerItem>:
-    focus_color: "#fffff0"
-    text_color: "#4a4939"
-    icon_color: "#4a4939"
-    ripple_color: "#c5bdd2"
-    selected_color: "#0c6c4d"
-
-<DrawerLabelItem@MDNavigationDrawerItem>:
-    text_color: "#4a4939"
-    icon_color: "#4a4939"
-    focus_behavior: False
-    selected_color: "#4a4939"
-    _no_ripple_effect: True
-
 <MainScreen>:
     MDNavigationLayout:
 
@@ -24,7 +10,7 @@
                 BoxLayout:
                     orientation: "vertical"
 
-                    # Top App Bar (Fixed at the top)
+                    # Top App Bar
                     MDTopAppBar:
                         title: "MAMBA"
                         elevation: 4
@@ -34,76 +20,87 @@
                         left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
                         right_action_items: [["theme-light-dark", lambda x: app.toggle_theme()]]
 
-                    # GridLayout for 6 Camera Views
-                    GridLayout:
-                        cols: 3
-                        rows: 2
-                        size_hint: (0.59, 0.25)  # Width and height adjustment
-                        spacing: dp(1.5)
-                        padding: dp(10), dp(10)  # (left, top, right, bottom) - Adds left padding
-
-                        Camera:
-                            id: cam1
-                            resolution: (640, 480)
-                            play: True
-                            size_hint: (1, 1)
-
-                        Camera:
-                            id: cam2
-                            resolution: (640, 480)
-                            play: True
-                            size_hint: (1, 1)
-
-                        Camera:
-                            id: cam3
-                            resolution: (640, 480)
-                            play: True
-                            size_hint: (1, 1)
-
-                        Camera:
-                            id: cam4
-                            resolution: (640, 480)
-                            play: True
-                            size_hint: (1, 1)
-
-                        Camera:
-                            id: cam5
-                            resolution: (640, 480)
-                            play: True
-                            size_hint: (1, 1)
-
-                        Camera:
-                            id: cam6
-                            resolution: (640, 480)
-                            play: True
-                            size_hint: (1, 1)
-
-                    # Message Input and Send
-                    # MDTextField:
-                    #     id: message_input
-                    #     hint_text: "Type a message..."
-                    #     size_hint: (1, None)
-                    #     height: dp(50)
-                    #     multiline: False
-                    #     on_text_validate: app.send_message(message_input.text)
-
-                    # Scrollable message window (below cameras)
-                    MDScrollView:
-                        size_hint: (1, 0.15)
-                        MDList:
-                            id: message_list
-
-                    # 3D Progress Bar with Percentage Display
+                    # Main Layout: Cameras on the Left, Messages on the Right
                     BoxLayout:
-                        size_hint: (1, 0.05)
+                        orientation: "horizontal"
+                        size_hint_y: 0.10  # Adjust height so the progress bar fits below
+                        padding: dp(10)
+
+                        # Left Side - Camera Grid
+                        GridLayout:
+                            cols: 3
+                            rows: 2
+                            size_hint_x: 0.5  #  width
+                            spacing: dp(1.5)
+                            padding: dp(10),dp(10) # left, top, right, bottom
+
+                            Camera:
+                                id: cam1
+                                resolution: (640, 480)
+                                play: True
+                                size_hint: (1, 1)
+
+                            Camera:
+                                id: cam2
+                                resolution: (640, 480)
+                                play: True
+                                size_hint: (1, 1)
+
+                            Camera:
+                                id: cam3
+                                resolution: (640, 480)
+                                play: True
+                                size_hint: (1, 1)
+
+                            Camera:
+                                id: cam4
+                                resolution: (640, 480)
+                                play: True
+                                size_hint: (1, 1)
+
+                            Camera:
+                                id: cam5
+                                resolution: (640, 480)
+                                play: True
+                                size_hint: (1, 1)
+
+                            Camera:
+                                id: cam6
+                                resolution: (640, 480)
+                                play: True
+                                size_hint: (1, 1)
+
+                        # Right Side - Messages
+                        BoxLayout:
+                            orientation: "vertical"
+                            size_hint_x: 0.3  # Takes 30% width
+                            padding: dp(10)
+
+                            MDLabel:
+                                text: "Messages"
+                                bold: True
+                                halign: "center"
+                                size_hint_y: None
+                                height: dp(30)
+                                theme_text_color: "Primary"
+
+                            MDScrollView:
+                                size_hint_y: 0.25
+                                MDList:
+                                    id: message_list
+                    # Progress Bar at the Bottom
+                    BoxLayout:
+                        size_hint:(0.67, 0.05)
                         padding: dp(10)
                         spacing: dp(10)
 
                         MDProgressBar:
                             id: progress_bar
-                            value: 0  # Initial progress
+                            value: 0 #Intial progress
                             max: 100
-                            size_hint_x: 0.5
+                            size_hint_x: 0.8
+                            size_hint_y: None #Disable vertical sizing with size_hint_y
+                            height: dp(4) #Thickness adjustment
                             pos_hint: {"center_x": 0.5}
                             color: "#229fff"
 
@@ -114,37 +111,3 @@
                             halign: "center"
                             theme_text_color: "Custom"
                             text_color: "#ffffff"
-
-
-        MDNavigationDrawer:
-            id: nav_drawer
-            radius: (0, 16, 16, 0)
-
-            MDNavigationDrawerMenu:
-
-                MDNavigationDrawerHeader:
-                    title: "ADR"
-                    title_color: "#4a4939"
-                    text: "By Momentux Systems"
-                    spacing: "4dp"
-                    padding: "12dp", 0, 0, "56dp"
-
-                MDNavigationDrawerLabel:
-                    text: "Settings"
-
-                MDNavigationDrawerDivider:
-
-                DrawerClickableItem:
-                    icon: "camera"
-                    text: "Multi-Camera"
-                    on_release: app.root.ids.screen_manager.current = "camera_screen"
-
-                DrawerClickableItem:
-                    icon: "message-text"
-                    text: "Messages"
-                    on_release: screen_manager.current = "message_window_screen"
-
-                DrawerClickableItem:
-                    icon: "arrow-left"
-                    text: "Back"
-                    on_release: nav_drawer.set_state("close")

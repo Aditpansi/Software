@@ -4,6 +4,7 @@ from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
 from datetime import datetime
 from kivymd.uix.list import OneLineListItem
+from kivy.graphics import Color, Line
 
 
 class MainScreen(MDScreen):
