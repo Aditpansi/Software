@@ -4,26 +4,52 @@ from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
 from datetime import datetime
 from kivymd.uix.list import OneLineListItem
-from kivy.graphics import Color, Line
+from kivy.graphics import Color, Line, Rectangle
+from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDRaisedButton
+from kivy.uix.widget import Widget
+
+
 
 
 class MainScreen(MDScreen):
     pass  # This class links with layout.kv
+class VerticalSeparator(Widget):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.size_hint_x = None
+        self.width = 2   # thickness of line
+        with self.canvas:
+            Color(0, 0, 0, 1)  # black line
+            self.rect = Rectangle(pos=self.pos, size=self.size)
+        self.bind(pos=self._update_rect, size=self._update_rect)
 
-class MyApp(MDApp):
+    def _update_rect(self, *args):
+        self.rect.pos = self.pos
+        self.rect.size = self.size
+
+class ZERO_GApp(MDApp):
 
     def build(self):
         Builder.load_file("Antenna_layout.kv")  # Load the KV file
         return MainScreen()
     
-    def send_message(self, message_text):
-        """Function to add messages to the message window"""
-        if message_text.strip():  # Check if the message is not empty
-            message_item = OneLineListItem(text=message_text)
-            self.root.ids.message_window_list.add_widget(message_item)
+    def on_start(self):
+        grid = self.root.ids.load_cells
+        for i in range(1, 31):  # change 31 -> 101 for 100 cells
+            grid.add_widget(MDLabel(text=f"Load Cell {i}", halign="left"))
+            grid.add_widget(
+                MDRaisedButton(
+                    text="Values",
+                    md_bg_color=(1, 1, 1, 1),
+                    text_color=(0, 0, 0, 1),
+                    line_color=(0, 0, 0, 1),
+                    radius=[10, 10, 10, 10],  
+                )
+            )
+            # Vertical separator
+        grid.add_widget(VerticalSeparator())
 
-        self.root.ids.message_input.text = ""  # Clear input field
-    
     def toggle_theme(self):
         # Toggle between light and dark mode
         if self.theme_cls.theme_style == "Light":
@@ -31,38 +57,10 @@ class MyApp(MDApp):
         else:
             self.theme_cls.theme_style = "Light"
 
-        # Update progress label color based on theme
-        self.update_label_color()
-
     def toggle_nav_drawer(self):
         # Placeholder function for opening a navigation drawer
         print("Navigation drawer toggled")
 
-    def update_label_color(self):
-        """Dynamically change the progress label color based on the theme"""
-        label = self.root.ids.progress_label
-        if self.theme_cls.theme_style == "Light":
-            label.text_color = (0, 0, 0, 1)  # Black in light mode
-        else:
-            label.text_color = (1, 1, 1, 1)  # White in dark mode
-
-    def update_progress(self, dt):
-        progress = self.root.ids.progress_bar
-        label = self.root.ids.progress_label
-        
-        if progress.value < 100:
-            progress.value += 2  # Increase progress smoothly
-        else:
-            progress.value = 0  # Reset when full
-        
-        label.text = f"{int(progress.value)}%"  # Update label text dynamically
-
-    def on_start(self):
-        Clock.schedule_interval(self.update_progress, 1)  # Update every second
-        self.update_label_color()  # Ensure label color matches theme on startup
-
-
-
 if __name__ == "__main__":
-    MyApp().run()
+    ZERO_GApp().run()
 

@@ -1,0 +1,12 @@
+{
+  "name": "zerog-dashboard",
+  "version": "1.0.0",
+  "description": "Zero G Load Cell Dashboard - Desktop Application",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {}
+}
