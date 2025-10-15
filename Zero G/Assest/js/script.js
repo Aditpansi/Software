@@ -134,3 +134,92 @@ window.addEventListener("load", () => {
         setTimeout(() => splash.remove(), 1000); // Remove from DOM after fade
     }, 1750); // Show splash for 1.5 seconds
 });
+
+// Position 30 load cells in perfect circle
+        const container = document.getElementById('labelsContainer');
+        const arrowsSvg = document.getElementById('arrowsSvg');
+        const totalCells = 30;
+        const outerRadius = 330; // Distance for load cells
+        const innerRadius = 240; // Distance to antenna edge
+        const centerX = 350;
+        const centerY = 350;
+        const cellSize = 58;
+
+        for (let i = 0; i < totalCells; i++) {
+            // Calculate angle - start from top and go clockwise
+            const angle = (i / totalCells) * 2 * Math.PI - Math.PI / 2;
+            
+            // Outer position (load cell)
+            const outerX = centerX + outerRadius * Math.cos(angle);
+            const outerY = centerY + outerRadius * Math.sin(angle);
+            
+            // Inner position (antenna edge)
+            const innerX = centerX + innerRadius * Math.cos(angle);
+            const innerY = centerY + innerRadius * Math.sin(angle);
+            
+            // Create arrow line
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', outerX);
+            line.setAttribute('y1', outerY);
+            line.setAttribute('x2', innerX);
+            line.setAttribute('y2', innerY);
+            line.setAttribute('class', 'arrow-line');
+            line.setAttribute('data-cell-id', i + 1);
+            arrowsSvg.appendChild(line);
+            
+            // Create arrow head (triangle)
+            const arrowHead = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+            const arrowSize = 6;
+            const headAngle = Math.atan2(innerY - outerY, innerX - outerX);
+            
+            const tip = { x: innerX, y: innerY };
+            const left = {
+                x: innerX - arrowSize * Math.cos(headAngle - Math.PI / 6),
+                y: innerY - arrowSize * Math.sin(headAngle - Math.PI / 6)
+            };
+            const right = {
+                x: innerX - arrowSize * Math.cos(headAngle + Math.PI / 6),
+                y: innerY - arrowSize * Math.sin(headAngle + Math.PI / 6)
+            };
+            
+            arrowHead.setAttribute('points', `${tip.x},${tip.y} ${left.x},${left.y} ${right.x},${right.y}`);
+            arrowHead.setAttribute('class', 'arrow-head');
+            arrowsSvg.appendChild(arrowHead);
+            
+            // Create load cell
+            const posX = outerX - cellSize / 2;
+            const posY = outerY - cellSize / 2;
+
+            const cell = document.createElement('div');
+            cell.className = 'load-cell';
+            cell.style.left = posX + 'px';
+            cell.style.top = posY + 'px';
+            cell.setAttribute('data-cell-id', i + 1);
+            cell.innerHTML = `
+                <span class="load-cell-label">LC ${i + 1}</span>
+                <span class="load-cell-value" id="loadCellValue${i + 1}">--</span>
+            `;
+            
+            // Hover effect for arrows
+            cell.addEventListener('mouseenter', function() {
+                const cellId = this.getAttribute('data-cell-id');
+                const cellLine = arrowsSvg.querySelector(`.arrow-line[data-cell-id="${cellId}"]`);
+                if (cellLine) {
+                    cellLine.style.stroke = '#ffffff';
+                    cellLine.style.strokeWidth = '3';
+                    cellLine.style.opacity = '1';
+                }
+            });
+            
+            cell.addEventListener('mouseleave', function() {
+                const cellId = this.getAttribute('data-cell-id');
+                const cellLine = arrowsSvg.querySelector(`.arrow-line[data-cell-id="${cellId}"]`);
+                if (cellLine) {
+                    cellLine.style.stroke = '#00796b';
+                    cellLine.style.strokeWidth = '2';
+                    cellLine.style.opacity = '0.6';
+                }
+            });
+            
+            container.appendChild(cell);
+        }
