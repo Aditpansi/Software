@@ -15,11 +15,23 @@
     </div>
     <div class="dashboard">
         <!-- Title Bar -->
-        <div class="title-bar">
-            <div class="title">ZERO GRAVITATION</div>
+       <div class="title-bar">
+            <div class="title animated-text">ZERO GRAVITATION</div>
+
+                <div class="nav-icons-right">
+                    <div class="info info-icon">
+                    <i class="bi bi-info-square"></i>
+                    <div class="tooltip">
+                        Version 1.0.0<br>Developed by Enlivening Technologies Pvt. Ltd.
+                    </div>
+                    </div>
+
+                    <button class="action-btn"id="launchBtn">Change View</button>
+                </div>
         </div>
 
-        <!-- Navigation Bar -->
+
+        <!-- Navigation Bar
         <div class="nav-bar">
             <div class="nav-icons">
                 <div class="nav-icon warning-icon">⚠️</div>
@@ -33,187 +45,176 @@
             </div>
             </div>
     
+        </div> -->
+
+        <div class="antenna-container"id="antennaView">
+            <div class="antenna-wrapper">
+                <img src="Assest/image/Antenna-Rig.png" alt="Antenna Rig" class="antenna-image">
+                <!-- SVG for arrows -->
+                <svg class="arrows-svg" id="arrowsSvg"></svg>
+                <div class="labels-container" id="labelsContainer">
+                    
+                </div>
+            </div>
+
         </div>
 
-        <!-- LC Grid
-        <div class="load-cell-grid">
+          <!-- LC Grid -->
+        <div class="load-cell-grid"id="gridView">
            <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 1</span>
-                    <span class="load-cell-value" id="loadCellValue1">--</span>
+                    <span class="load-cell-label-2">LC 1</span>
+                    <span class="load-cell-value-2" id="loadCellValue1">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 2</span>
-                    <span class="load-cell-value" id="loadCellValue2">--</span>
+                    <span class="load-cell-label-2">LC 2</span>
+                    <span class="load-cell-value-2" id="loadCellValue2">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 3</span>
-                    <span class="load-cell-value" id="loadCellValue3">--</span>
+                    <span class="load-cell-label-2">LC 3</span>
+                    <span class="load-cell-value-2" id="loadCellValue3">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 4</span>
-                    <span class="load-cell-value" id="loadCellValue4">--</span>
-                </div>
-            </div>
-
-            
-            <div class="load-cell-row">
-                <div class="load-cell-item">
-                    <span class="load-cell-label">LC 5</span>
-                    <span class="load-cell-value" id="loadCellValue5">--</span>
-                </div>
-                <div class="load-cell-item">
-                    <span class="load-cell-label">LC 6</span>
-                    <span class="load-cell-value" id="loadCellValue6">--</span>
-                </div>
-                <div class="load-cell-item">
-                    <span class="load-cell-label">LC 7</span>
-                    <span class="load-cell-value" id="loadCellValue7">--</span>
-                </div>
-                <div class="load-cell-item">
-                    <span class="load-cell-label">LC 8</span>
-                    <span class="load-cell-value" id="loadCellValue8">--</span>
+                    <span class="load-cell-label-2">LC 4</span>
+                    <span class="load-cell-value-2" id="loadCellValue4">--</span>
                 </div>
             </div>
 
             
             <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 9</span>
-                    <span class="load-cell-value" id="loadCellValue9">--</span>
+                    <span class="load-cell-label-2">LC 5</span>
+                    <span class="load-cell-value-2" id="loadCellValue5">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 10</span>
-                    <span class="load-cell-value" id="loadCellValue10">--</span>
+                    <span class="load-cell-label-2">LC 6</span>
+                    <span class="load-cell-value-2" id="loadCellValue6">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 11</span>
-                    <span class="load-cell-value" id="loadCellValue11">--</span>
+                    <span class="load-cell-label-2">LC 7</span>
+                    <span class="load-cell-value-2" id="loadCellValue7">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 12</span>
-                    <span class="load-cell-value" id="loadCellValue12">--</span>
+                    <span class="load-cell-label-2">LC 8</span>
+                    <span class="load-cell-value-2" id="loadCellValue8">--</span>
                 </div>
             </div>
 
             
             <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 13</span>
-                     <span class="load-cell-value" id="loadCellValue13">--</span>
+                    <span class="load-cell-label-2">LC 9</span>
+                    <span class="load-cell-value-2" id="loadCellValue9">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 14</span>
-                    <span class="load-cell-value" id="loadCellValue14">--</span>
+                    <span class="load-cell-label-2">LC 10</span>
+                    <span class="load-cell-value-2" id="loadCellValue10">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 15</span>
-                     <span class="load-cell-value" id="loadCellValue15">--</span>
+                    <span class="load-cell-label-2">LC 11</span>
+                    <span class="load-cell-value-2" id="loadCellValue11">--</span>
+                </div>
+                <div class="load-cell-item">
+                    <span class="load-cell-label-2">LC 12</span>
+                    <span class="load-cell-value-2" id="loadCellValue12">--</span>
+                </div>
+            </div>
+
+            
+            <div class="load-cell-row">
+                <div class="load-cell-item">
+                    <span class="load-cell-label-2">LC 13</span>
+                     <span class="load-cell-value-2" id="loadCellValue13">--</span>
+                </div>
+                <div class="load-cell-item">
+                    <span class="load-cell-label-2">LC 14</span>
+                    <span class="load-cell-value-2" id="loadCellValue14">--</span>
+                </div>
+                <div class="load-cell-item">
+                    <span class="load-cell-label-2">LC 15</span>
+                     <span class="load-cell-value-2" id="loadCellValue15">--</span>
                 </div>
                 
                  <div class="load-cell-item">
-                    <span class="load-cell-label">LC 16</span>
-                    <span class="load-cell-value" id="loadCellValue16">--</span>
+                    <span class="load-cell-label-2">LC 16</span>
+                    <span class="load-cell-value-2" id="loadCellValue16">--</span>
                 </div>
             </div>
 
            
             <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 17</span>
-                     <span class="load-cell-value" id="loadCellValue17">--</span>
+                    <span class="load-cell-label-2">LC 17</span>
+                     <span class="load-cell-value-2" id="loadCellValue17">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 18</span>
-                     <span class="load-cell-value" id="loadCellValue18">--</span>
+                    <span class="load-cell-label-2">LC 18</span>
+                     <span class="load-cell-value-2" id="loadCellValue18">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 19</span>
-                     <span class="load-cell-value" id="loadCellValue19">--</span>
+                    <span class="load-cell-label-2">LC 19</span>
+                     <span class="load-cell-value-2" id="loadCellValue19">--</span>
                 </div>
                  <div class="load-cell-item">
-                    <span class="load-cell-label">LC 20</span>
-                     <span class="load-cell-value" id="loadCellValue20">--</span>
+                    <span class="load-cell-label-2">LC 20</span>
+                     <span class="load-cell-value-2" id="loadCellValue20">--</span>
                 </div>
             </div>
 
             
             <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 21</span>
-                     <span class="load-cell-value" id="loadCellValue21">--</span>
+                    <span class="load-cell-label-2">LC 21</span>
+                     <span class="load-cell-value-2" id="loadCellValue21">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 22</span>
-                     <span class="load-cell-value" id="loadCellValue22">--</span>
+                    <span class="load-cell-label-2">LC 22</span>
+                     <span class="load-cell-value-2" id="loadCellValue22">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 23</span>
-                     <span class="load-cell-value" id="loadCellValue23">--</span>
+                    <span class="load-cell-label-2">LC 23</span>
+                     <span class="load-cell-value-2" id="loadCellValue23">--</span>
                 </div>
                  <div class="load-cell-item">
-                    <span class="load-cell-label">LC 24</span>
-                    <span class="load-cell-value" id="loadCellValue24">--</span>
+                    <span class="load-cell-label-2">LC 24</span>
+                    <span class="load-cell-value-2" id="loadCellValue24">--</span>
                 </div>
             </div>
 
             
             <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 25</span>
-                     <span class="load-cell-value" id="loadCellValue25">--</span>
+                    <span class="load-cell-label-2">LC 25</span>
+                     <span class="load-cell-value-2" id="loadCellValue25">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 26</span>
-                    <span class="load-cell-value" id="loadCellValue26">--</span>
+                    <span class="load-cell-label-2">LC 26</span>
+                    <span class="load-cell-value-2" id="loadCellValue26">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 27</span>
-                     <span class="load-cell-value" id="loadCellValue27">--</span>
+                    <span class="load-cell-label-2">LC 27</span>
+                     <span class="load-cell-value-2" id="loadCellValue27">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 28</span>
-                     <span class="load-cell-value" id="loadCellValue28">--</span>
+                    <span class="load-cell-label-2">LC 28</span>
+                     <span class="load-cell-value-2" id="loadCellValue28">--</span>
                 </div>
             </div>
 
             
             <div class="load-cell-row">
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 29</span>
-                    <span class="load-cell-value" id="loadCellValue29">--</span>
+                    <span class="load-cell-label-2">LC 29</span>
+                    <span class="load-cell-value-2" id="loadCellValue29">--</span>
                 </div>
                 <div class="load-cell-item">
-                    <span class="load-cell-label">LC 30</span>
-                    <span class="load-cell-value" id="loadCellValue30">--</span>
+                    <span class="load-cell-label-2">LC 30</span>
+                    <span class="load-cell-value-2" id="loadCellValue30">--</span>
                 </div>
                
             </div>
-        </div> -->
-
-        <div class="antenna-container">
-            <div class="antenna-wrapper">
-                <img src="Assest/image/Antenna-Rig.png" alt="Antenna Rig" class="antenna-image">
-                <!-- SVG for arrows -->
-                <svg class="arrows-svg" id="arrowsSvg"></svg>
-                <div class="labels-container" id="labelsContainer">
-                    <!-- Generate 30 load cells -->
-                    <!-- <script>
-                    for (let i = 0; i < 30; i++) {
-                        document.write(`
-                        <div class="load-cell" style="--i:${i}">
-                            <span class="load-cell-label">LC ${i + 1}</span>
-                            <span class="load-cell-value" id="loadCellValue${i + 1}">--</span>
-                        </div>
-                        `);
-                    }
-                    </script> -->
-                </div>
-            </div>
-
         </div>
 
-    
 
 
     <script src="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/Zero G/Assest/js/script.js"></script>

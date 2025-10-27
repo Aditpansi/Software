@@ -19,6 +19,21 @@ body {
     background-color: #e8e8e8;
 }
 
+.dashboard-2 {
+    width: 100vw;
+    height: 100vh;
+    display: none; /* ✅ hidden by default */
+    flex-direction: column;
+    background-color: #e8e8e8;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* smooth fade animation */
+}
+
+.dashboard-2.active {
+    display: flex;
+    opacity: 1;
+}
+
 /* Splash Screen Styles */
 #splash-screen {
     position: fixed;
@@ -81,124 +96,93 @@ body {
 
 /* Title Bar */
 .title-bar {
-    background-color: #f5f5dc;
-    padding: 8px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
+  background-color: #f5f5dc;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  font-family: Copperplate, sans-serif;
 }
 
-.title {
+/* .title {
     font-size: 18px;
     font-weight: 600;
     color: #333;
     padding-left: 45%;
     font-family:copperplate;
+} */
+
+
+/* --- LEFT TITLE WITH ANIMATION --- */
+.animated-text {
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #333, #007bff, #333);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textflow 3s linear infinite;
 }
 
-.status-indicator {
-    display: flex;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: 500;
+@keyframes textflow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
-.battery-level {
-    margin-right: 4px;
-}
-
-/* Navigation Bar */
-.nav-bar {
-   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 40px;                /* 🔹 Slim width */
-  background-color: #bababa;
+/* --- RIGHT ICONS AND BUTTON --- */
+.nav-icons-right {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: start;
-  padding-top: 20px;
-  border-right: 1px solid #bbb;
-  z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.08);
+  gap: 15px;
 }
 
-.info-icon{
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    filter: grayscale(0.3);
-    padding-left: 2px;
-    display: flex;
-    gap: 25px;
+.info-icon {
+  position: relative;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
+
 .info-icon:hover {
-    transform: scale(1.1);
+  color: #007bff;
 }
 
-/* Tooltip styling - smooth slide-in from the right */
+/* Tooltip styling */
 .tooltip {
-    position: absolute;
-    top: 50%;
-    left: 130%;
-    transform: translateY(-50%) translateX(10px);
-    background-color: #333;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    text-align: left;
-    transition:
-        opacity 0.3s ease-in-out,
-        transform 0.3s ease-in-out;
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* On hover - fade + slide */
 .info-icon:hover .tooltip {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
+  display: block;
 }
 
-/* Arrow pointing left */
-.tooltip::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -6px;
-    transform: translateY(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent #333 transparent transparent;
-}
-/* Icons Container */
-.nav-icons {
-    display: flex;
-    gap: 25px;
-    margin-left: 0; /* <-- Remove left margin */
+/* --- BUTTON --- */
+.action-btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
-.nav-icon {
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    filter: grayscale(0.3);
-}
-
-.nav-icon:hover {
-    transform: scale(1.1);
-    filter: grayscale(0);
+.action-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 /*----------------------------------------------- Load Cell Grid-------------------------------------- */
@@ -245,7 +229,7 @@ body {
         }
 
         .arrow-line {
-            stroke: #00796b;
+            stroke: #0056b3;
             stroke-width: 2;
             fill: none;
             opacity: 0.6;
@@ -260,7 +244,7 @@ body {
         }
 
         .arrow-head {
-            fill: #00796b;
+            fill: #0056b3;
             opacity: 0.7;
         }
 
@@ -304,7 +288,7 @@ body {
 
         .load-cell-value {
             background-color: #ffffff;
-            color: #00796b;
+            color: red;
             font-weight: 700;
             padding: 2px 5px;
             border-radius: 3px;
@@ -314,6 +298,56 @@ body {
         }
 
         .load-cell:hover .load-cell-value {
-            background: #00796b;
+            background: #0056b3;
             color: #fff;
         }
+
+/* --------------------------------------LOad Cell Grid View -2 ---------------------------------------  */
+    .load-cell-grid {
+    flex: 1;
+    padding: 50px;
+    overflow-y: auto;
+    }
+    
+    /* Responsive Grid Layout */
+    .load-cell-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 15px;
+    }
+    
+    .load-cell-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    min-height: 50px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    /* Label styling */
+    .load-cell-label-2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+    }
+    
+    /* Value box styling */
+    .load-cell-value-2 {
+    background-color: #ffffff;
+    color: #00796b;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 6px;
+    min-width: 70px;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+ 
+ 

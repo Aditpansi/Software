@@ -215,7 +215,7 @@ window.addEventListener("load", () => {
                 const cellId = this.getAttribute('data-cell-id');
                 const cellLine = arrowsSvg.querySelector(`.arrow-line[data-cell-id="${cellId}"]`);
                 if (cellLine) {
-                    cellLine.style.stroke = '#00796b';
+                    cellLine.style.stroke = '#0056b3';
                     cellLine.style.strokeWidth = '2';
                     cellLine.style.opacity = '0.6';
                 }
@@ -223,3 +223,25 @@ window.addEventListener("load", () => {
             
             container.appendChild(cell);
         }
+
+
+        // --- View Toggle ---
+const launchBtn = document.getElementById('launchBtn');
+const antennaView = document.getElementById('antennaView');
+const gridView = document.getElementById('gridView');
+let isGridVisible = false;
+
+launchBtn.addEventListener('click', () => {
+  isGridVisible = !isGridVisible;
+
+  if (isGridVisible) {
+    antennaView.style.display = 'none';
+    gridView.style.display = 'block';
+    launchBtn.textContent = 'Antenna View';
+  } else {
+    antennaView.style.display = 'flex';
+    gridView.style.display = 'none';
+    launchBtn.textContent = 'Grid View';
+  }
+});
+
