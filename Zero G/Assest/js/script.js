@@ -89,28 +89,7 @@ function resetCell() {
     }, 100);
 }
 
-// Navigation button functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const sysButton = document.querySelector('.sys-button');
-    const navIcons = document.querySelectorAll('.nav-icon');
-    
-    sysButton.addEventListener('click', function() {
-        alert('System menu opened');
-    });
-    
-    navIcons.forEach((icon, index) => {
-        icon.addEventListener('click', function() {
-            const actions = [
-                'Battery status checked',
-                'Warning acknowledged', 
-                'Audio settings opened',
-                'Lighting controls opened',
-                'Settings menu opened'
-            ];
-            alert(actions[index]);
-        });
-    });
-});
+
 
 // Close modal when clicking outside
 window.addEventListener('click', function(event) {
@@ -244,4 +223,5 @@ launchBtn.addEventListener('click', () => {
     launchBtn.textContent = 'Grid View';
   }
 });
+
 
