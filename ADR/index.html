@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero G Dashboard</title>
-    <link rel="stylesheet" href="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/Zero G/Assest/css/style.css">
+    <title>Antenna Deployment Rig</title>
+    <link rel="stylesheet" href="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/Assest/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
@@ -16,7 +16,7 @@
     <div class="dashboard">
         <!-- Title Bar -->
        <div class="title-bar">
-            <div class="title animated-text">ZERO GRAVITATION</div>
+            <div class="title animated-text">ANTENNA DEPLYOMENT RIG</div>
 
                 <div class="nav-icons-right">
                     <div class="info info-icon">
@@ -25,181 +25,147 @@
                         Version 1.0.0<br>Developed by Enlivening Technologies Pvt. Ltd.
                     </div>
                     </div>
-
-                    <button class="action-btn"id="launchBtn">Change View</button>
                 </div>
         </div>
 
-        <div class="antenna-container"id="antennaView">
-            <div class="antenna-wrapper">
-                <img src="Assest/image/Antenna-Rig.png" alt="Antenna Rig" class="antenna-image">
-                <!-- SVG for arrows -->
-                <svg class="arrows-svg" id="arrowsSvg"></svg>
-                <div class="labels-container" id="labelsContainer">
-                    
-                </div>
-            </div>
+<div class="layout" id="positionMode">
 
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <div class="box">
+            <div class="bar-title">Position Indicators</div>
+
+            <div class="row"><span class="label">Tilt</span><span id="tiltPos" class="readout">0</span><span class="unit">Deg</span><span style="margin-left:30px;">Limit Switch</span><div class="light green"></div><div class="light red"></div></div>
+            <div class="row"><span class="label">Roll</span><span id="rollPos" class="readout">0</span><span class="unit">Deg</span><span style="margin-left:30px;">Limit Switch</span><div class="light green"></div><div class="light red"></div></div>
+            <div class="row"><span class="label">Z</span><span id="zPos" class="readout">0</span><span class="unit">mm</span><span style="margin-left:30px;">Limit Switch</span><div class="light green"></div><div class="light red"></div></div>
         </div>
 
-          <!-- LC Grid -->
-        <div class="loadcell-grid"id="gridView">
-           <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 1</span>
-                    <span class="loadcell-value2" id="loadCellValue1">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 2</span>
-                    <span class="loadcell-value2" id="loadCellValue2">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 3</span>
-                    <span class="loadcell-value2" id="loadCellValue3">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 4</span>
-                    <span class="loadcell-value2" id="loadCellValue4">--</span>
-                </div>
-            </div>
+        <div class="box">
+            <div class="bar-title">Message Box</div>
+            <div class="message-box homing-msg" id="messageBox"></div>
+        </div>
+    </div>
 
-            
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 5</span>
-                    <span class="loadcell-value2" id="loadCellValue5">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 6</span>
-                    <span class="loadcell-value2" id="loadCellValue6">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 7</span>
-                    <span class="loadcell-value2" id="loadCellValue7">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 8</span>
-                    <span class="loadcell-value2" id="loadCellValue8">--</span>
-                </div>
-            </div>
 
-            
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 9</span>
-                    <span class="loadcell-value2" id="loadCellValue9">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 10</span>
-                    <span class="loadcell-value2" id="loadCellValue10">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 11</span>
-                    <span class="loadcell-value2" id="loadCellValue11">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 12</span>
-                    <span class="loadcell-value2" id="loadCellValue12">--</span>
-                </div>
-            </div>
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+        <div class="bar-title">Control Panel</div>
 
-            
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 13</span>
-                     <span class="loadcell-value2" id="loadCellValue13">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 14</span>
-                    <span class="loadcell-value2" id="loadCellValue14">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 15</span>
-                     <span class="loadcell-value2" id="loadCellValue15">--</span>
-                </div>
-                
-                 <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 16</span>
-                    <span class="loadcell-value2" id="loadCellValue16">--</span>
-                </div>
-            </div>
-
-           
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 17</span>
-                     <span class="loadcell-value2" id="loadCellValue17">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 18</span>
-                     <span class="loadcell-value2" id="loadCellValue18">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 19</span>
-                     <span class="loadcell-value2" id="loadCellValue19">--</span>
-                </div>
-                 <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 20</span>
-                     <span class="loadcell-value2" id="loadCellValue20">--</span>
-                </div>
-            </div>
-
-            
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 21</span>
-                     <span class="loadcell-value2" id="loadCellValue21">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 22</span>
-                     <span class="loadcell-value2" id="loadCellValue22">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 23</span>
-                     <span class="loadcell-value2" id="loadCellValue23">--</span>
-                </div>
-                 <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 24</span>
-                    <span class="loadcell-value2" id="loadCellValue24">--</span>
-                </div>
-            </div>
-
-            
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 25</span>
-                     <span class="loadcell-value2" id="loadCellValue25">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 26</span>
-                    <span class="loadcell-value2" id="loadCellValue26">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 27</span>
-                     <span class="loadcell-value2" id="loadCellValue27">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 28</span>
-                     <span class="loadcell-value2" id="loadCellValue28">--</span>
-                </div>
-            </div>
-
-            
-            <div class="loadcell-row">
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 29</span>
-                    <span class="loadcell-value2" id="loadCellValue29">--</span>
-                </div>
-                <div class="loadcell-item">
-                    <span class="loadcell-label2">LC 30</span>
-                    <span class="loadcell-value2" id="loadCellValue30">--</span>
-                </div>
-               
+        <div class="box">
+            <div class="right-values">
+                <div class="row"><span class="label">Tilt</span><input id="tiltCtrl" value="0" /><span class="unit">Deg</span><button onclick="updateValue('tilt')">Enter</button></div>
+                <div class="row"><span class="label">Roll</span><input id="rollCtrl" value="0" /><span class="unit">Deg</span><button onclick="updateValue('roll')">Enter</button></div>
+                <div class="row"><span class="label">Z</span><input id="zCtrl" value="0" /><span class="unit">mm</span><button onclick="updateValue('z')">Enter</button></div>
             </div>
         </div>
 
+        <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">EMERGENCY STOP</button>
+            <button class="control-btn" style="width:100%;height:60px;background:#555;color:white;border-radius:12px;" onclick="goHome()">Go Home</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- PARAMETERS MODE -->
+<div class="layout" id="parametersMode" style="display:none;">
+    <div class="left-panel">
+        <div class="box">
+            <div class="bar-title">Pulse Per (mm / Degree)</div>
+            <div class="row"><span class="label">Tilt</span><span style="width:220px;">Pulse per Degree</span><input value="1032"></div>
+            <div class="row"><span class="label">Roll</span><span style="width:220px;">Pulse per Degree</span><input value="189"></div>
+            <div class="row"><span class="label">Z</span><span style="width:220px;">Pulse per mm</span><input value="600"></div>
+        </div>
+
+        <div class="box">
+            <div class="bar-title">Revolutions Per Minute (RPM)</div>
+            <div class="row"><span class="label">Tilt</span><span style="width:120px;">Max RPM</span><input value="500"><span class="unit">RPM</span><button>LOAD</button></div>
+            <div class="row"><span class="label">Roll</span><span style="width:120px;">Max RPM</span><input value="300"><span class="unit">RPM</span><button>LOAD</button></div>
+            <div class="row"><span class="label">Z</span><span style="width:120px;">Max RPM</span><input value="500"><span class="unit">RPM</span><button>LOAD</button></div>
+            <div style="text-align:right;opacity:0.7;font-size:14px;">Press LOAD after entering RPM</div>
+        </div>
+
+        <div class="box" style="display:flex;justify-content:space-between;">
+            <button class="control-btn go-btn" style="width:180px;height:50px;border-radius:12px;">TILT HOME</button>
+            <button class="control-btn go-btn" style="width:180px;height:50px;border-radius:12px;">ROLL HOME</button>
+            <button class="control-btn go-btn" style="width:180px;height:50px;border-radius:12px;">Z HOME</button>
+        </div>
+
+        <div class="box" style="display:flex;justify-content:space-between;">
+            <div class="row"><input value="-32.4"><button>TILT ZERO</button></div>
+            <div class="row"><input value="0.0"><button>ROLL ZERO</button></div>
+            <div class="row"><input value="0"><button>Z ZERO</button></div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="bar-title">System Status</div>
+        <div class="message-box homing-msg"></div>
+        <div style="margin-top:20px;">
+            <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">PRESS IT, IF ALL IN HOME</button>
+        </div>
+    </div>
+</div>
+
+<!-- -------------------------------------------------------MANUAL MODE ------------------------------------------------------->
+<div class="layout" id="manualMode" style="display:none;">
+       <div class="left-panel">
+        <!-- Position Indicators Box -->
+        <div class="box">
+            <div class="bar-title">Position Indicators</div>
+            <div class="row"><span class="label">Tilt</span><span id="tiltPosManual" class="readout">0</span><span class="unit">Deg</span><span style="margin-left:30px;">Limit Switch</span><div class="light green"></div><div class="light red"></div></div>
+            <div class="row"><span class="label">Roll</span><span id="rollPosManual" class="readout">0</span><span class="unit">Deg</span><span style="margin-left:30px;">Limit Switch</span><div class="light green"></div><div class="light red"></div></div>
+            <div class="row"><span class="label">Z</span><span id="zPosManual" class="readout">0</span><span class="unit">mm</span><span style="margin-left:30px;">Limit Switch</span><div class="light green"></div><div class="light red"></div></div>
+        </div>
+
+        <!-- Message Box -->
+        <div class="box">
+            <div class="bar-title">Message Box</div>
+            <div class="message-box homing-msg"> </div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="bar-title">Manual Control</div>
+            <div class="box">
+                <div class="manual-grid">
+                    <!-- TILT -->
+                    <button class="control-btn circle" data-axis="tilt" data-dir="-1">▲</button>
+                    <div class="axis-label">TILT</div>
+                    <button class="control-btn circle" data-axis="tilt" data-dir="1">▼</button>
+
+                    <!-- ROLL -->
+                    <button class="control-btn circle" data-axis="roll" data-dir="-1">◀</button>
+                    <div class="axis-label">ROLL</div>
+                    <button class="control-btn circle" data-axis="roll" data-dir="1">▶</button>
+
+                    <!-- Z -->
+                    <button class="control-btn circle" data-axis="z" data-dir="-1">▲</button>
+                    <div class="axis-label">Z</div>
+                    <button class="control-btn circle" data-axis="z" data-dir="1">▼</button>
+                </div>
+            </div>
+             <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">EMERGENCY STOP</button>
+            <button class="control-btn" style="width:100%;height:60px;background:#555;color:white;border-radius:12px;" onclick="goHome()">Go Home</button>
+        </div>
+    </div>
+
+       
 
 
-    <script src="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/Zero G/Assest/js/script.js"></script>
+</div>
+
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <div class="nav-btn" onclick="showManual()">Manual</div>
+    <div class="nav-btn active" onclick="showPosition()">Position</div>
+    <div class="nav-btn" onclick="showParameters()">Parameters</div>
+</div>
+
+    </div>
+
+    <script src="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/Assest/js/script.js"></script>
 </body>
 </html>

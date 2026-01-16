@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/Zero G/index.html"
+            "file": "/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/index.html"
         }
     ]
 }
