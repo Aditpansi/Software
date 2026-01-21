@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antenna Deployment Rig</title>
-    <link rel="stylesheet" href="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/Assest/css/style.css">
+    <link rel="stylesheet" href="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/frontend/Assest/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
 <body>
     <!-- Splash Screen -->
     <div id="splash-screen">
-        <img src="Assest/image/enlive.jpeg" alt="Company Logo" class="splash-logo">
+        <img src="frontend/Assest/image/enlive.jpeg" alt="Company Logo" class="splash-logo">
     </div>
     <div class="dashboard">
         <!-- Title Bar -->
@@ -27,6 +27,14 @@
                     </div>
                 </div>
         </div>
+
+      <div class="status-bar" id="statusBar">
+        <span class="warning-icon">⚠</span>
+        <span class="status-text">SYSTEM STATUS</span>
+        <span id="dateTime" class="date-time">--</span>
+    </div>
+
+
 
 <div class="layout" id="positionMode">
 
@@ -49,20 +57,21 @@
 
     <!-- RIGHT PANEL -->
     <div class="right-panel">
-        <div class="bar-title">Control Panel</div>
-
         <div class="box">
+            <div class="bar-title">Control Panel</div>
             <div class="right-values">
                 <div class="row"><span class="label">Tilt</span><input id="tiltCtrl" value="0" /><span class="unit">Deg</span><button onclick="updateValue('tilt')">Enter</button></div>
                 <div class="row"><span class="label">Roll</span><input id="rollCtrl" value="0" /><span class="unit">Deg</span><button onclick="updateValue('roll')">Enter</button></div>
                 <div class="row"><span class="label">Z</span><input id="zCtrl" value="0" /><span class="unit">mm</span><button onclick="updateValue('z')">Enter</button></div>
-            </div>
-        </div>
 
-        <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+                <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
             <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">EMERGENCY STOP</button>
             <button class="control-btn" style="width:100%;height:60px;background:#555;color:white;border-radius:12px;" onclick="goHome()">Go Home</button>
         </div>
+            </div>
+        </div>
+
+        
     </div>
 
 </div>
@@ -99,11 +108,13 @@
     </div>
 
     <div class="right-panel">
-        <div class="bar-title">System Status</div>
-        <div class="message-box homing-msg"></div>
-        <div style="margin-top:20px;">
-            <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">PRESS IT, IF ALL IN HOME</button>
-        </div>
+        <div class="box">
+            <div class="bar-title">System Status</div>
+            <div class="message-box homing-msg"></div>
+            <div style="margin-top:20px;">
+                <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">PRESS IT, IF ALL IN HOME</button>
+            </div>
+            </div>
     </div>
 </div>
 
@@ -126,33 +137,35 @@
     </div>
 
     <div class="right-panel">
+    <div class="box">
         <div class="bar-title">Manual Control</div>
-            <div class="box">
-                <div class="manual-grid">
-                    <!-- TILT -->
-                    <button class="control-btn circle" data-axis="tilt" data-dir="-1">▲</button>
-                    <div class="axis-label">TILT</div>
-                    <button class="control-btn circle" data-axis="tilt" data-dir="1">▼</button>
 
-                    <!-- ROLL -->
-                    <button class="control-btn circle" data-axis="roll" data-dir="-1">◀</button>
-                    <div class="axis-label">ROLL</div>
-                    <button class="control-btn circle" data-axis="roll" data-dir="1">▶</button>
+        <div class="manual-grid">
+            <!-- TILT -->
+            <button class="control-btn circle" data-axis="tilt" data-dir="-1">▲</button>
+            <div class="axis-label">TILT</div>
+            <button class="control-btn circle" data-axis="tilt" data-dir="1">▼</button>
 
-                    <!-- Z -->
-                    <button class="control-btn circle" data-axis="z" data-dir="-1">▲</button>
-                    <div class="axis-label">Z</div>
-                    <button class="control-btn circle" data-axis="z" data-dir="1">▼</button>
-                </div>
-            </div>
-             <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
-            <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">EMERGENCY STOP</button>
-            <button class="control-btn" style="width:100%;height:60px;background:#555;color:white;border-radius:12px;" onclick="goHome()">Go Home</button>
+            <!-- ROLL -->
+            <button class="control-btn circle" data-axis="roll" data-dir="-1">◀</button>
+            <div class="axis-label">ROLL</div>
+            <button class="control-btn circle" data-axis="roll" data-dir="1">▶</button>
+
+            <!-- Z -->
+            <button class="control-btn circle" data-axis="z" data-dir="-1">▲</button>
+            <div class="axis-label">Z</div>
+            <button class="control-btn circle" data-axis="z" data-dir="1">▼</button>
         </div>
+        <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+        <button class="control-btn stop-btn" style="width:100%;height:60px;border-radius:14px;">
+            EMERGENCY STOP
+        </button>
+        <button class="control-btn" style="width:100%;height:60px;background:#555;color:white;border-radius:12px;" onclick="goHome()">
+            Go Home
+        </button>
     </div>
-
-       
-
+    </div>
+</div>
 
 </div>
 
@@ -166,6 +179,6 @@
 
     </div>
 
-    <script src="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/Assest/js/script.js"></script>
+    <script src="/Users/aditpansi/Desktop/Momentux/Antenna Development/Software/ADR/frontend/Assest/js/script.js"></script>
 </body>
 </html>

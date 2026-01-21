@@ -86,7 +86,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
   font-family: Copperplate, sans-serif;
 }
 /* --- LEFT TITLE WITH ANIMATION --- */
@@ -143,6 +143,43 @@ body {
 .info-icon:hover .tooltip {
   display: block;
 }
+/* --- STATUS BAR BELOW TITLE --- */
+.status-bar {
+    height: 30px;
+    width: 40%;              /* 🔽 reduce width */
+    margin: 0 auto;
+    background: #0f0e47;
+    border-radius: 0 0 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.warning-icon {
+    color: #b30000;
+    font-size: 16px;
+    animation: blinkWarn 1.5s infinite;
+}
+
+@keyframes blinkWarn {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.status-text {
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
+.status-bar .date-time {
+    color: #f5f5dc;
+    font-weight: 600;
+    white-space: nowrap;
+}
 
     .layout {
         display: grid;
@@ -155,15 +192,7 @@ body {
     @keyframes fadeIn { from { opacity:0; transform:scale(0.98);} to {opacity:1; transform:scale(1);} }
 
     .left-panel, .right-panel { padding: 15px; }
-    .right-panel {
-        border-left: 2px solid #444;
-        background: (rgb(164, 159, 159));
-        border-radius: 16px;
-        box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 6px 18px rgba(0,0,0,0.8);
-        display: flex;
-        flex-direction: column;
-    }
-
+   
     .box {
         background:#c7c7c3;
         padding: 12px;
@@ -189,12 +218,12 @@ body {
         align-items: center;
         margin: 8px 0;
     }
-    .label { width: 90px; font-size: 18px; }
+    .label { width: 90px; font-size: 21px; }
     input {
         width: 90px;
         padding: 6px;
         margin-right: 10px;
-        font-size: 16px;
+        font-size: 21px;
         background: radial-gradient(circle at top, #222, #000);
         color: #00ffea;
         border: 1px solid #777;
@@ -207,7 +236,7 @@ body {
         width: 90px;
         padding: 6px;
         margin-right: 10px;
-        font-size: 16px;
+        font-size: 21px;
         background: radial-gradient(circle at top, #111, #000);
         color: #00ffea;
         border: 1px solid #555;
